@@ -41,22 +41,36 @@ export function EnquiryModal({ service, isOpen, onClose }: EnquiryModalProps) {
 
   if (!isOpen) return null;
 
-  const onSubmit = (data: EnquiryForm) => {
+  const onSubmit = async (data: EnquiryForm) => {
     console.log("Submitting enquiry:", data);
-    // Here we simulate API submission
+    
+    try {
+      await fetch("https://formsubmit.co/ajax/knowledgehub.suncity@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `New Enquiry for ${data.service}`,
+          ...data,
+        }),
+      });
+    } catch (err) {
+      console.error(err);
+    }
+
+    setIsSubmitted(true);
     setTimeout(() => {
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        onClose();
-        reset();
-      }, 3000);
-    }, 1000);
+      setIsSubmitted(false);
+      onClose();
+      reset();
+    }, 3000);
   };
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(`Hi, I am interested in the ${service?.title} course.`);
-    window.open(`https://wa.me/919999999999?text=${text}`, "_blank");
+    window.open(`https://wa.me/917997908465?text=${text}`, "_blank");
   };
 
   return (
@@ -97,7 +111,7 @@ export function EnquiryModal({ service, isOpen, onClose }: EnquiryModalProps) {
                   <label className="block text-sm font-medium text-slate-700 mb-1">Service</label>
                   <input 
                     {...register("service")}
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-500 cursor-not-allowed outline-none"
+                    className="w-full h-14 rounded-xl border border-slate-200 bg-slate-50/80 px-4 text-sm font-normal text-slate-500 cursor-not-allowed outline-none shadow-sm"
                     readOnly
                   />
                 </div>
@@ -106,34 +120,34 @@ export function EnquiryModal({ service, isOpen, onClose }: EnquiryModalProps) {
                   <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
                   <input 
                     {...register("name")}
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                    className="w-full h-14 rounded-xl border border-slate-200 bg-slate-50/50 px-4 text-sm font-normal text-slate-700 outline-none transition-all focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300 shadow-sm"
                     placeholder="John Doe"
                   />
-                  {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
+                  {errors.name && <p className="text-red-500 text-xs mt-1 font-medium">{errors.name.message}</p>}
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
                   <input 
                     {...register("email")}
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                    className="w-full h-14 rounded-xl border border-slate-200 bg-slate-50/50 px-4 text-sm font-normal text-slate-700 outline-none transition-all focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300 shadow-sm"
                     placeholder="john@example.com"
                   />
-                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+                  {errors.email && <p className="text-red-500 text-xs mt-1 font-medium">{errors.email.message}</p>}
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
                   <input 
                     {...register("phone")}
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
-                    placeholder="+91 99999 99999"
+                    className="w-full h-14 rounded-xl border border-slate-200 bg-slate-50/50 px-4 text-sm font-normal text-slate-700 outline-none transition-all focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300 shadow-sm"
+                    placeholder="7997908465"
                   />
-                  {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
+                  {errors.phone && <p className="text-red-500 text-xs mt-1 font-medium">{errors.phone.message}</p>}
                 </div>
 
                 <div className="pt-2">
-                  <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6">
+                  <Button type="submit" className="w-full h-14 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-base font-bold text-white shadow-[0_8px_20px_-8px_rgba(79,70,229,0.5)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_25px_-8px_rgba(79,70,229,0.7)] active:translate-y-0 active:shadow-md border-0">
                     Submit Enquiry
                   </Button>
                 </div>

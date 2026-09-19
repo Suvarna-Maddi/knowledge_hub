@@ -56,18 +56,16 @@ export function ContactBand() {
             Talk to our course advisor today.
           </h2>
         </div>
-        <Button asChild variant="accent" size="xl">
-          <Link to="/contact">
-            Contact us <ArrowRight />
-          </Link>
-        </Button>
+        <a href="tel:7997908465" className="inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-blue-600 px-8 text-base font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-blue-700">
+          Contact us <ArrowRight className="size-4" />
+        </a>
       </div>
     </section>
   );
 }
 export function ContactDetails({ compact = false }: { compact?: boolean }) {
   const items = [
-    { icon: Phone, label: "Call us", value: "7997908465 / 8790116519", href: "tel:+917997908465" },
+    { icon: Phone, label: "Call us", value: "7997908465", href: "tel:+917997908465" },
     {
       icon: Mail,
       label: "Email us",

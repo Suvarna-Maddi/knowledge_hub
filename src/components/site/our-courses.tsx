@@ -135,7 +135,7 @@ export function OurCourses() {
         </div>
 
         {/* Course Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 relative">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-16 relative">
           {/* Subtle glow behind the active card row */}
           <div className="absolute top-[40%] w-full h-[60%] bg-blue-500/10 blur-[100px] pointer-events-none" />
 

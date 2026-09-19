@@ -92,7 +92,7 @@ function Reveal({ children, className = "" }: { children: ReactNode; className?:
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setVisible(true);
           observer.disconnect();
         }
@@ -111,11 +111,11 @@ function Reveal({ children, className = "" }: { children: ReactNode; className?:
 }
 
 function HomePage() {
-  const [activeCategory, setActiveCategory] = useState(courseCategories[0].title);
+  const [activeCategory, setActiveCategory] = useState(courseCategories[0]!.title);
   const [activeLogo, setActiveLogo] = useState<string | null>(null);
   const [heroPointer, setHeroPointer] = useState({ x: 50, y: 50 });
   const activeCourses =
-    courseCategories.find((category) => category.title === activeCategory) ?? courseCategories[0];
+    courseCategories.find((category) => category.title === activeCategory) ?? courseCategories[0]!;
   return (
     <>
       <section className="hero relative overflow-hidden">
@@ -168,8 +168,8 @@ function HomePage() {
               />
 
               {/* Orbiting Course Logos */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[38rem] h-[38rem] z-20 pointer-events-none animate-[spin_40s_linear_infinite]">
-                {[
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[38rem] h-[38rem] scale-[0.55] sm:scale-75 md:scale-100 z-20 pointer-events-none animate-[spin_40s_linear_infinite]">
+                {([
                   { name: "Programming", img: "/pythonlogo.png", color: "text-blue-400" },
                   { name: "Data & AI", img: "https://cdn.simpleicons.org/tensorflow/FF6F00", color: "text-orange-400" },
                   { name: "Java", img: "/java.png", color: "text-red-500" },
@@ -177,7 +177,7 @@ function HomePage() {
                   { name: "Networking", img: "https://cdn.simpleicons.org/cisco/049FD9", color: "text-sky-500" },
                   { name: "Office Tools", img: "/microsoftofc.png", color: "text-orange-600" },
                   { name: "Cloud", img: "/cloud.png", color: "text-gray-800 dark:text-gray-200" },
-                ].map((item, index, arr) => {
+                ] as Array<{ name: string; img: string; color: string; icon?: any }>).map((item, index, arr) => {
                   const angle = (360 / arr.length) * index;
                   const isActive = activeLogo === item.name;
                   return (
