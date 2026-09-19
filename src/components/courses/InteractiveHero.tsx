@@ -285,9 +285,6 @@ export function InteractiveHero() {
               <ChevronRight className="w-5 h-5" />
             </button>
 
-            <span className="text-xs font-bold text-slate-500 ml-2">
-              Page {currentPage + 1} of {bookPages.length} (Auto Flipping)
-            </span>
           </div>
 
           {/* Main CTAs */}

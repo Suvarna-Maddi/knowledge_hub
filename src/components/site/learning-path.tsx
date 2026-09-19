@@ -134,12 +134,15 @@ export function LearningPath() {
                 min-height: 250px;
             }
             .panel-vertical-title {
-                transform: translateY(-50%);
+                transform: translate(-50%, -50%);
                 bottom: auto;
                 top: 50%;
-                left: 2rem;
-                transform-origin: center left;
+                left: 50%;
+                transform-origin: center;
                 rotate: 0deg;
+                font-size: 1rem;
+                text-align: center;
+                width: 100%;
             }
             .panel-content {
                 margin-top: 4rem;

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Phone, Users, MonitorPlay, Briefcase, GraduationCap, Code2, Globe } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { ArrowRight, PlayCircle, Users, Laptop, Briefcase, BookOpen, Target, Sparkles, Medal } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ServicesHeroProps {
   onEnquire: () => void;
@@ -8,136 +8,148 @@ interface ServicesHeroProps {
 
 export function ServicesHero({ onEnquire }: ServicesHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#020817] via-[#0B1E48] to-[#04112E] pt-[120px] pb-20 lg:pt-[160px] lg:pb-28 border-b border-white/5 -mt-20 sm:-mt-24">
+    <section className="relative overflow-hidden bg-[#020817] pt-[120px] pb-12 lg:pt-[160px] lg:pb-24 -mt-20 sm:-mt-24">
       
-      {/* Dynamic Background Elements */}
-      <div className="absolute top-0 right-0 -mr-32 -mt-32 w-[40rem] h-[40rem] bg-blue-600/20 rounded-full blur-[100px] pointer-events-none animate-pulse duration-[8000ms]" />
-      <div className="absolute bottom-0 left-0 -ml-32 -mb-32 w-[35rem] h-[35rem] bg-cyan-600/20 rounded-full blur-[90px] pointer-events-none animate-pulse duration-[10000ms]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
+      {/* Background Graphic elements */}
+      <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-cyan-600/20 rounded-full blur-[100px] mix-blend-screen" />
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)]" />
+      </div>
 
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+      <div className="mx-auto max-w-[1200px] px-5 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           
           {/* Left Content */}
-          <div className="text-center lg:text-left space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm font-bold text-blue-300 backdrop-blur-sm mx-auto lg:mx-0 shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:bg-blue-500/20 transition-colors cursor-default">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.8)]"></span>
-              </span>
-              Transform Your Career at Knowledge Hub
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center lg:text-left space-y-8 relative z-20"
+          >
+            <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full shadow-lg">
+              <Sparkles className="w-4 h-4 text-cyan-400" />
+              <span className="text-slate-300 font-bold tracking-wide text-xs uppercase">Premium Services</span>
             </div>
 
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-[72px] font-black tracking-tighter text-white font-display leading-[1.05] drop-shadow-2xl">
-                Learn. Build. <br className="hidden lg:block"/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 filter drop-shadow-[0_0_30px_rgba(6,182,212,0.5)]">Succeed.</span>
-              </h1>
-              <p className="text-lg md:text-xl text-blue-100/90 font-medium max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Knowledge Hub empowers students and professionals with <strong className="text-white font-bold">real-world IT skills, academic excellence, and language mastery</strong>. Let us bridge the gap between your ambition and industry demands.
-              </p>
-            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-[70px] font-black tracking-tight text-white font-display leading-[1.05]">
+              Beyond <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Learning.</span><br/>
+              Towards <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500">Success.</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-slate-400 font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              We provide an ecosystem of support to help you learn faster, build real-world experience, and land your dream job with confidence.
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
               <Button 
                 onClick={onEnquire}
                 size="lg"
-                className="group h-14 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-8 text-base font-extrabold uppercase tracking-wide text-white shadow-[0_4px_25px_rgba(6,182,212,0.4)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_35px_rgba(6,182,212,0.6)] border border-cyan-400/30"
+                className="h-14 rounded-full bg-blue-600 hover:bg-blue-500 px-8 text-sm font-extrabold text-white shadow-[0_0_30px_rgba(37,99,235,0.4)] transition-all hover:scale-105"
               >
-                Book Free Demo
-                <ArrowUpRight className="ml-2 size-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                Get Free Counseling <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button 
                 onClick={onEnquire}
                 size="lg"
                 variant="outline"
-                className="group h-14 rounded-xl border border-white/20 bg-white/5 px-8 text-base font-bold uppercase tracking-wide text-white hover:bg-white/15 hover:border-white/40 transition-all backdrop-blur-md shadow-[0_4px_25px_rgba(255,255,255,0.05)] hover:-translate-y-1"
+                className="h-14 rounded-full border border-slate-600 bg-white/5 backdrop-blur-md px-8 text-sm font-extrabold text-white hover:bg-white/10 transition-all hover:scale-105"
               >
-                <Phone className="mr-2 size-5 text-cyan-300 group-hover:scale-110 transition-transform" />
-                Get Free Counseling
+                <PlayCircle className="mr-2 w-5 h-5 text-cyan-400" />
+                See How It Works
               </Button>
             </div>
             
-            {/* Highlights Bar */}
-            <div className="pt-10 mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-white/10 relative">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_10px_rgba(6,182,212,1)]" />
-              
-              <div className="flex flex-col items-center lg:items-start gap-1 p-4 rounded-2xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
-                <div className="flex items-center gap-2 text-cyan-400 mb-1">
-                  <Users className="size-6 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]" />
-                  <span className="text-2xl font-black text-white">1,500+</span>
+            {/* Trust Indicators */}
+            <div className="pt-8 flex flex-wrap items-center justify-center lg:justify-start gap-8 text-sm font-bold text-slate-300">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
+                  <Users className="w-4 h-4 text-blue-400" />
                 </div>
-                <span className="text-sm font-bold text-blue-200/70 uppercase tracking-wider">Trained</span>
+                <span>Expert Mentors</span>
               </div>
-              <div className="flex flex-col items-center lg:items-start gap-1 p-4 rounded-2xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
-                <div className="flex items-center gap-2 text-blue-400 mb-1">
-                  <MonitorPlay className="size-6 drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
-                  <span className="text-2xl font-black text-white">40+</span>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center border border-cyan-500/30">
+                  <Briefcase className="w-4 h-4 text-cyan-400" />
                 </div>
-                <span className="text-sm font-bold text-blue-200/70 uppercase tracking-wider">Courses</span>
+                <span>Placement Support</span>
               </div>
-              <div className="flex flex-col items-center lg:items-start gap-1 p-4 rounded-2xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
-                <div className="flex items-center gap-2 text-indigo-400 mb-1">
-                  <Briefcase className="size-6 drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]" />
-                  <span className="text-2xl font-black text-white">98%</span>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center border border-purple-500/30">
+                  <Laptop className="w-4 h-4 text-purple-400" />
                 </div>
-                <span className="text-sm font-bold text-blue-200/70 uppercase tracking-wider">Success</span>
+                <span>Live Projects</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Floating 3D Element (CSS Only) */}
-          <div className="relative hidden lg:flex h-[600px] w-full items-center justify-center animate-in fade-in zoom-in duration-1000 delay-300 perspective-1000">
-            <div className="relative w-full max-w-[480px] aspect-square animate-[float_8s_ease-in-out_infinite]">
-              {/* Outer Glowing Ring */}
-              <div className="absolute inset-4 rounded-full border border-cyan-500/30 border-dashed animate-[spin_40s_linear_infinite]" />
-              <div className="absolute inset-8 rounded-full border border-blue-500/40 animate-[spin_30s_linear_infinite_reverse]" />
-              
-              {/* Central Glass Orb */}
-              <div className="absolute inset-[15%] rounded-full bg-gradient-to-tr from-blue-600/40 to-cyan-400/40 backdrop-blur-xl border border-white/20 shadow-[0_0_100px_rgba(6,182,212,0.4),inset_0_0_50px_rgba(255,255,255,0.2)] flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-[length:250%_250%,100%_100%] animate-[shimmer_5s_infinite]" />
-                
-                {/* Floating Service Icons inside the Orb */}
-                <div className="relative w-full h-full">
-                  <div className="absolute top-[20%] left-[50%] -translate-x-1/2 bg-white/10 p-3 rounded-2xl backdrop-blur-md border border-white/30 animate-[float_3s_ease-in-out_infinite]">
-                    <Code2 className="w-10 h-10 text-cyan-300" />
-                  </div>
-                  <div className="absolute top-[50%] left-[20%] -translate-y-1/2 bg-white/10 p-3 rounded-2xl backdrop-blur-md border border-white/30 animate-[float_4s_ease-in-out_infinite_reverse]">
-                    <GraduationCap className="w-10 h-10 text-blue-300" />
-                  </div>
-                  <div className="absolute top-[50%] right-[20%] -translate-y-1/2 bg-white/10 p-3 rounded-2xl backdrop-blur-md border border-white/30 animate-[float_3.5s_ease-in-out_infinite_reverse]">
-                    <Globe className="w-10 h-10 text-indigo-300" />
-                  </div>
-                  <div className="absolute bottom-[20%] left-[50%] -translate-x-1/2 bg-white/10 p-3 rounded-2xl backdrop-blur-md border border-white/30 animate-[float_4.5s_ease-in-out_infinite]">
-                    <Briefcase className="w-10 h-10 text-emerald-300" />
-                  </div>
-                  
-                  {/* Core Pulse */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-cyan-400/80 shadow-[0_0_50px_rgba(6,182,212,1)] animate-ping duration-[3000ms]" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-cyan-300 shadow-[0_0_30px_rgba(255,255,255,1)]" />
-                </div>
+          {/* Right Interactive Glass Layout */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="relative w-full h-[500px] lg:h-[600px] hidden md:block perspective-1000"
+          >
+            {/* Center Glowing Orb */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-blue-500/30 rounded-full blur-2xl animate-pulse" />
+            
+            {/* Floating Service Cards */}
+            <motion.div 
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-[15%] left-[5%] z-30 bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] w-64 transform -rotate-6 hover:rotate-0 transition-transform duration-500"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center mb-4 border border-cyan-500/30">
+                <Target className="w-6 h-6 text-cyan-400" />
               </div>
-            </div>
-          </div>
-          
+              <h3 className="text-white font-bold text-lg mb-2">Career Guidance</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">Personalized roadmaps to help you navigate your tech career.</p>
+            </motion.div>
+
+            <motion.div 
+              animate={{ y: [0, 20, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute top-[40%] right-[0%] z-20 bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] w-64 transform rotate-3 hover:rotate-0 transition-transform duration-500"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-4 border border-blue-500/30">
+                <Briefcase className="w-6 h-6 text-blue-400" />
+              </div>
+              <h3 className="text-white font-bold text-lg mb-2">100% Placement</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">Resume building, mock interviews, and guaranteed job assistance.</p>
+            </motion.div>
+
+            <motion.div 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+              className="absolute bottom-[5%] left-[20%] z-40 bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] w-64 transform -rotate-2 hover:rotate-0 transition-transform duration-500"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center mb-4 border border-purple-500/30">
+                <Medal className="w-6 h-6 text-purple-400" />
+              </div>
+              <h3 className="text-white font-bold text-lg mb-2">Certifications</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">Industry recognized certificates and global exam prep.</p>
+            </motion.div>
+
+            {/* Connecting lines SVG */}
+            <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none opacity-20" viewBox="0 0 500 600">
+              <path d="M150,200 Q250,300 350,280" fill="none" stroke="#60A5FA" strokeWidth="2" strokeDasharray="4 4" />
+              <path d="M250,450 Q300,350 350,300" fill="none" stroke="#22D3EE" strokeWidth="2" strokeDasharray="4 4" />
+              <circle cx="150" cy="200" r="4" fill="#60A5FA" />
+              <circle cx="350" cy="280" r="4" fill="#60A5FA" />
+              <circle cx="250" cy="450" r="4" fill="#22D3EE" />
+            </svg>
+          </motion.div>
+
         </div>
       </div>
       
-      <style>{`
-        @keyframes float {
-          0% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(2deg); }
-          100% { transform: translateY(0px) rotate(0deg); }
-        }
-        @keyframes shimmer {
-          0% { background-position: 200% center; }
-          100% { background-position: -200% center; }
-        }
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-      `}</style>
+      {/* Wave divider at bottom transitioning into the light slate-50 section below */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
+        <svg className="relative block w-full h-[60px] lg:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C52.16,93.6,103.9,86.1,154.5,76.5,209.64,66,265.17,66.45,321.39,56.44Z" fill="#F8FAFC"></path>
+        </svg>
+      </div>
     </section>
   );
 }
-

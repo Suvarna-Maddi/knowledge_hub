@@ -1,5 +1,5 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
-import { Wifi, Trophy, UserCheck, MessageCircle } from "lucide-react";
+import { createFileRoute, notFound, Link } from "@tanstack/react-router";
+import { Wifi, Trophy, UserCheck, MessageCircle, ArrowLeft } from "lucide-react";
 import { coursesData, type Course } from "@/data/courses";
 import { CourseEnrollmentModal } from "@/components/courses/CourseEnrollmentModal";
 import { useState } from "react";
@@ -43,6 +43,12 @@ function CourseDetailsPage() {
 
       <div className="max-w-5xl mx-auto px-5 lg:px-8 relative z-10 animate-in slide-in-from-bottom-8 fade-in duration-700">
         
+        <div className="mb-6">
+          <Link to="/courses" className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors group">
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Courses
+          </Link>
+        </div>
+
         {/* Main Details Card */}
         <div className="clay-card-blue p-6 md:p-12 border border-white relative overflow-hidden shadow-2xl rounded-[2.5rem]">
           

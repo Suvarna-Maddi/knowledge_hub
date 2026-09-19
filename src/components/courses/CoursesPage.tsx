@@ -46,19 +46,21 @@ export function CoursesPage() {
 
           return (
             <div key={category} className="space-y-8">
-              {/* Category Header with Clay Pill Badge */}
-              <div className="flex items-center gap-4 my-8">
-                <div className="h-0.5 bg-gradient-to-r from-transparent via-slate-300 to-transparent flex-1 opacity-60"></div>
-                <div className="clay-pill px-8 py-3.5 border border-white/90 flex items-center gap-3 shadow-md">
-                  <span className="h-3 w-3 rounded-full bg-blue-600 animate-pulse"></span>
-                  <h2 className="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-wide">
+              {/* Enhanced Category Header */}
+              <div className="flex items-center gap-6 my-12">
+                <div className="h-0.5 bg-gradient-to-r from-transparent via-blue-300/50 to-transparent flex-1"></div>
+                
+                <div className="px-10 py-4 rounded-3xl border border-white shadow-[0_10px_30px_rgba(37,99,235,0.1)] flex items-center gap-4 bg-white/80 backdrop-blur-xl transition-all duration-300 hover:shadow-[0_20px_40px_rgba(37,99,235,0.15)] hover:-translate-y-1 group">
+                  <span className="relative flex h-4 w-4">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-4 w-4 bg-blue-600 transition-colors group-hover:bg-cyan-500"></span>
+                  </span>
+                  <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-800 uppercase tracking-widest">
                     {category}
                   </h2>
-                  <span className="px-3 py-1 rounded-full text-xs font-black bg-blue-100 text-blue-800">
-                    {categoryCourses.length} Courses
-                  </span>
                 </div>
-                <div className="h-0.5 bg-gradient-to-r from-transparent via-slate-300 to-transparent flex-1 opacity-60"></div>
+                
+                <div className="h-0.5 bg-gradient-to-r from-transparent via-blue-300/50 to-transparent flex-1"></div>
               </div>
 
               {/* 3D Claymorphic Course Grid */}

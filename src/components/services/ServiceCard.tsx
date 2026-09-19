@@ -1,61 +1,52 @@
 import { Service } from "../../types/service";
 import * as Icons from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 
 type ServiceCardProps = {
   service: Service;
-  onOpenEnquiry: (service: Service) => void;
+  index: number;
 };
 
-export function ServiceCard({ service, onOpenEnquiry }: ServiceCardProps) {
+// Define specific colors for each card index based on the design
+const getCardStyles = (index: number) => {
+  const styles = [
+    { bg: "bg-blue-100", text: "text-blue-600" }, // Career Guidance
+    { bg: "bg-purple-100", text: "text-purple-600" }, // Job Placement
+    { bg: "bg-green-100", text: "text-green-600" }, // Practical Project
+    { bg: "bg-orange-100", text: "text-orange-600" }, // Certification
+    { bg: "bg-pink-100", text: "text-pink-600" }, // Internship
+    { bg: "bg-yellow-100", text: "text-yellow-600" }, // Academic Coaching
+    { bg: "bg-purple-100", text: "text-purple-600" }, // Spoken English
+    { bg: "bg-cyan-100", text: "text-cyan-600" }, // Cloud & IT
+  ];
+  return styles[index % styles.length];
+};
+
+export function ServiceCard({ service, index }: ServiceCardProps) {
   // @ts-ignore - dynamic icon
   const Icon = Icons[service.icon] || Icons.BookOpen;
+  const style = getCardStyles(index);
 
   return (
-    <div className="group relative bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] flex flex-col h-full overflow-hidden z-10">
+    <div className="flex flex-col h-full group p-6 rounded-2xl bg-blue-500/10 backdrop-blur-md border border-blue-400/30 shadow-[0_4px_16px_rgba(37,99,235,0.05)] transition-all duration-300 hover:bg-blue-500/20 hover:border-blue-400/50 hover:shadow-[0_8px_24px_rgba(37,99,235,0.15)] hover:-translate-y-1 overflow-hidden relative">
       
-      {/* Dynamic Background Glow on Hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-transparent to-cyan-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      {/* Subtle glass reflection effect */}
+      <div className="absolute top-0 left-0 w-[150%] h-[100px] bg-white/30 -rotate-45 -translate-x-full -translate-y-[150px] transition-transform duration-700 group-hover:translate-x-full group-hover:translate-y-full blur-md" />
 
-      {/* Decorative top border glow */}
-      <div className="absolute top-0 left-0 w-0 h-1.5 bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600 group-hover:w-full transition-all duration-700 ease-out" />
-
-      <div className="relative z-20 flex-1 flex flex-col">
-        {/* Floating 3D Icon Pill */}
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-white to-blue-50 text-blue-600 flex items-center justify-center mb-6 shadow-[0_8px_20px_rgba(59,130,246,0.15)] border border-white group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 group-hover:shadow-[0_12px_25px_rgba(6,182,212,0.3)]">
-          <Icon className="w-8 h-8 group-hover:text-cyan-500 transition-colors duration-300" />
-        </div>
-
-        <h3 className="text-2xl font-black text-slate-900 mb-3 group-hover:text-blue-700 transition-colors duration-300 font-display tracking-tight">
-          {service.title}
-        </h3>
-        
-        <p className="text-slate-600 text-sm leading-relaxed mb-8 flex-grow font-medium">
-          {service.description}
-        </p>
-
-        {/* Tags with subtle glass look */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {service.tags.map(tag => (
-            <span key={tag} className="text-[10px] font-extrabold tracking-wider uppercase bg-slate-100/80 text-slate-600 px-3 py-1.5 rounded-xl border border-slate-200/50 group-hover:bg-blue-50 group-hover:text-blue-700 group-hover:border-blue-200/50 transition-all duration-300 shadow-sm">
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Full-width Gradient Enquire Button */}
-        <Button 
-          onClick={() => onOpenEnquiry(service)}
-          className="w-full relative overflow-hidden bg-slate-900 text-white rounded-xl h-14 font-extrabold tracking-wide uppercase text-sm shadow-md transition-all duration-300 border-0 group-hover:shadow-[0_8px_25px_rgba(59,130,246,0.4)] hover:scale-[1.02] active:scale-[0.98]"
-        >
-          {/* Button Background Gradient that slides in on hover */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          <span className="relative z-10 flex items-center justify-center gap-2">
-            Enquire Now
-            <Icons.ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </span>
-        </Button>
+      {/* Colored Icon Container */}
+      <div className={`w-12 h-12 rounded-xl bg-blue-500/20 text-blue-700 backdrop-blur-sm border border-blue-300/50 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110 shadow-sm relative z-10`}>
+        <Icon className="w-6 h-6" />
       </div>
+
+      <h3 className="text-[18px] font-bold text-blue-900 mb-2 leading-snug group-hover:text-blue-700 transition-colors relative z-10">
+        {service.title}
+      </h3>
+      
+      <p className="text-slate-700 text-[14px] leading-relaxed mb-6 flex-grow relative z-10">
+        {service.description}
+      </p>
+
+
     </div>
   );
 }

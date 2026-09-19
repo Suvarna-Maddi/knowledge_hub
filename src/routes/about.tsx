@@ -101,6 +101,23 @@ const AnimatedNumber = ({ valueStr }: { valueStr: string }) => {
 export function AboutPage() {
   const [activeTab, setActiveTab] = useState<number>(0);
   const [activeStep, setActiveStep] = useState<number>(0);
+
+  // Auto-scroll the 5-Step Transformation Journey
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveStep((prev) => {
+        const nextStep = (prev + 1) % 5;
+        // Scroll the active card into view horizontally
+        const card = document.getElementById(`journey-step-${nextStep}`);
+        const container = document.getElementById('journey-cards-container');
+        if (card && container && window.innerWidth < 768) {
+           card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+        return nextStep;
+      });
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [enrollCourse, setEnrollCourse] = useState<Course | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -422,12 +439,12 @@ export function AboutPage() {
 
   const mentorTeam = [
     {
-      name: "S. K. Verma",
-      role: "Lead Python & Full Stack Mentor",
-      exp: "10+ Years Exp",
-      desc: "Specializes in Python Full Stack, Data Structures, Django, and Enterprise Web Development.",
-      badge: "Tech Lead",
-      icon: Code2,
+      name: "Syed Zia",
+      role: "Veteran Trainer & Mentor",
+      exp: "20+ Years Exp",
+      desc: "A highly experienced veteran trainer who brings deep industry insights and simplifies complex concepts.",
+      badge: "Veteran Trainer",
+      icon: Users,
       gradient: "from-blue-600 to-sky-500"
     },
     {
@@ -1124,15 +1141,16 @@ export function AboutPage() {
           {/* Connecting Line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600 -translate-y-1/2 rounded-full -z-0 opacity-40"></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
+          <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 scrollbar-hide" id="journey-cards-container">
             {journeySteps.map((item, idx) => {
               const Icon = item.icon;
               const isActive = activeStep === idx;
               return (
                 <div 
                   key={idx}
+                  id={`journey-step-${idx}`}
                   onClick={() => setActiveStep(idx)}
-                  className={`clay-card p-6 border border-white flex flex-col justify-between cursor-pointer transition-all duration-300 relative group ${
+                  className={`min-w-[280px] md:min-w-0 snap-center clay-card p-6 border border-white flex flex-col justify-between cursor-pointer transition-all duration-300 relative group ${
                     isActive ? "ring-2 ring-blue-600 scale-105 shadow-xl bg-white" : "hover:-translate-y-2"
                   }`}
                 >
@@ -1562,14 +1580,14 @@ function NetworkNodeShowcase() {
         </p>
       </div>
 
-      {/* Main Radial Ecosystem Container */}
+      {/* Main Ecosystem Container - Responsive */}
       <div 
-        className="relative max-w-6xl mx-auto py-12 min-h-[580px] sm:min-h-[640px] flex items-center justify-center z-10 select-none"
+        className="relative max-w-6xl mx-auto py-8 lg:py-12 min-h-auto lg:min-h-[640px] flex flex-col lg:block z-10 select-none"
         onMouseEnter={() => setIsAutoPlay(false)}
         onMouseLeave={() => setIsAutoPlay(true)}
       >
-        {/* Dotted Connector Lines */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible">
+        {/* Dotted Connector Lines - Desktop Only */}
+        <svg className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible">
           {/* Connecting Dotted Lines & Halo Dots */}
           {nodes.map(n => {
             const isSelected = n.id === selectedNode;
@@ -1585,7 +1603,6 @@ function NetworkNodeShowcase() {
                   strokeDasharray="6,6"
                   className={isSelected ? "animate-pulse" : "opacity-70"}
                 />
-                {/* Intermediate Connection Halo Dots */}
                 <circle cx={n.dotCoords.x} cy={n.dotCoords.y} r="7" fill="none" stroke={isSelected ? "#2563eb" : "#bfdbfe"} strokeWidth="2" />
                 <circle cx={n.dotCoords.x} cy={n.dotCoords.y} r="3.5" fill={isSelected ? "#2563eb" : "#3b82f6"} />
               </g>
@@ -1594,7 +1611,7 @@ function NetworkNodeShowcase() {
         </svg>
 
         {/* --- CENTER ACTIVE DETAIL CARD (COMPACT SIZE) --- */}
-        <div className="relative z-20 w-full max-w-[320px] sm:max-w-[370px] bg-white rounded-3xl border-2 border-blue-500 p-4 sm:p-5 shadow-[0_15px_40px_rgba(37,99,235,0.15)] transition-all duration-300 animate-in fade-in zoom-in-95">
+        <div className="relative z-20 w-full max-w-[320px] sm:max-w-[400px] mx-auto lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 bg-white rounded-3xl border-2 border-blue-500 p-4 sm:p-5 shadow-[0_15px_40px_rgba(37,99,235,0.15)] transition-all duration-300 animate-in fade-in zoom-in-95">
           {/* Header Row */}
           <div className="flex items-center justify-between gap-3 pb-3 border-b border-slate-100">
             <div className="flex items-center gap-2.5">
@@ -1631,36 +1648,63 @@ function NetworkNodeShowcase() {
           </div>
         </div>
 
-        {/* --- 6 OUTER DOMAIN CARDS (EXACT AS SCREENSHOT) --- */}
-        {nodes.map((node) => {
-          const isSelected = node.id === selectedNode;
-          const Icon = node.icon;
-          return (
-            <div
-              key={node.id}
-              onClick={() => setSelectedNode(node.id)}
-              onMouseEnter={() => setSelectedNode(node.id)}
-              style={{
-                ...node.position,
-              }}
-              className={`absolute z-30 p-3.5 sm:p-4 rounded-[24px] sm:rounded-[28px] border cursor-pointer transition-all duration-300 flex items-center gap-3.5 min-w-[210px] sm:min-w-[250px] max-w-[280px] bg-white ${
-                isSelected 
-                  ? "ring-2 ring-blue-600 border-blue-400 shadow-[0_15px_35px_rgba(37,99,235,0.2)] scale-[1.05]" 
-                  : "border-blue-100 shadow-[0_10px_30px_rgba(37,99,235,0.06)] hover:border-blue-300 hover:shadow-lg hover:scale-[1.02]"
-              }`}
-            >
-              <div className="h-11 w-11 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 text-blue-600">
-                <Icon className="w-5 h-5" />
+        {/* --- MOBILE DOMAIN SELECTORS (Grid) --- */}
+        <div className="mt-8 grid grid-cols-2 gap-3 lg:hidden px-2 w-full max-w-sm mx-auto">
+          {nodes.map((node) => {
+            const isSelected = node.id === selectedNode;
+            const Icon = node.icon;
+            return (
+              <div
+                key={node.id}
+                onClick={() => setSelectedNode(node.id)}
+                className={`p-3 rounded-2xl border cursor-pointer transition-all duration-300 flex flex-col items-center text-center gap-2 ${
+                  isSelected 
+                    ? "bg-blue-50 border-blue-400 ring-1 ring-blue-600 shadow-md scale-105" 
+                    : "bg-white border-slate-200 shadow-sm hover:border-blue-300"
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-2xs ${isSelected ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-500"}`}>
+                  <Icon className="w-5 h-5" />
+                </div>
+                <span className={`text-[11px] font-bold ${isSelected ? "text-blue-900" : "text-slate-700"}`}>
+                  {node.title}
+                </span>
               </div>
-              <div className="text-left flex-1 min-w-0">
-                <h4 className="font-extrabold text-sm sm:text-base text-slate-900 font-display leading-snug truncate">{node.title}</h4>
-                <p className="text-slate-500 text-[11px] sm:text-xs leading-normal font-medium mt-0.5 line-clamp-2">{node.desc}</p>
-              </div>
-              <ChevronRight className={`w-4 h-4 shrink-0 ml-auto stroke-[2.5] transition-transform ${isSelected ? "text-blue-600 translate-x-1" : "text-slate-700"}`} />
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
 
+        {/* --- DESKTOP OUTER DOMAIN CARDS (Radial Absolute) --- */}
+        <div className="hidden lg:block">
+          {nodes.map((node) => {
+            const isSelected = node.id === selectedNode;
+            const Icon = node.icon;
+            return (
+              <div
+                key={node.id}
+                onClick={() => setSelectedNode(node.id)}
+                onMouseEnter={() => setSelectedNode(node.id)}
+                style={{
+                  ...node.position,
+                }}
+                className={`absolute z-30 p-3.5 sm:p-4 rounded-[24px] sm:rounded-[28px] border cursor-pointer transition-all duration-300 flex items-center gap-3.5 min-w-[210px] sm:min-w-[250px] max-w-[280px] bg-white ${
+                  isSelected 
+                    ? "ring-2 ring-blue-600 border-blue-400 shadow-[0_15px_35px_rgba(37,99,235,0.2)] scale-[1.05]" 
+                    : "border-blue-100 shadow-[0_10px_30px_rgba(37,99,235,0.06)] hover:border-blue-300 hover:shadow-lg hover:scale-[1.02]"
+                }`}
+              >
+                <div className="h-11 w-11 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 text-blue-600">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div className="text-left flex-1 min-w-0">
+                  <h4 className="font-extrabold text-sm sm:text-base text-slate-900 font-display leading-snug truncate">{node.title}</h4>
+                  <p className="text-slate-500 text-[11px] sm:text-xs leading-normal font-medium mt-0.5 line-clamp-2">{node.desc}</p>
+                </div>
+                <ChevronRight className={`w-4 h-4 shrink-0 ml-auto stroke-[2.5] transition-transform ${isSelected ? "text-blue-600 translate-x-1" : "text-slate-700"}`} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
