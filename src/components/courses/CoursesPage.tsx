@@ -80,9 +80,7 @@ export function CoursesPage() {
                         <div className="absolute inset-0 translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-20 pointer-events-none"></div>
                         
                         {/* Inner Card Content */}
-                        <div className="relative flex-1 h-full bg-[#e8f4ff]/90 backdrop-blur-xl rounded-[2rem] p-6 flex flex-col m-[1px]">
-                          
-                          {/* Ambient Corner Glow */}
+                        <div className="relative flex-1 h-full bg-[#e8f4ff] rounded-[2rem] p-6 flex flex-col m-[1px] shadow-[inset_8px_8px_16px_rgba(255,255,255,0.8),inset_-8px_-8px_16px_rgba(170,195,225,0.5),6px_6px_16px_rgba(10,25,50,0.06)] border border-white/40">
                           <div className="absolute -top-12 -right-12 w-32 h-32 bg-sky-100 rounded-full blur-2xl opacity-60 group-hover:bg-blue-200 transition-colors duration-500"></div>
                           
                           <div className="relative z-10 flex-1 flex flex-col">

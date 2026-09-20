@@ -140,7 +140,7 @@ export function OurCourses() {
           <div className="absolute top-[40%] w-full h-[60%] bg-blue-500/10 blur-[100px] pointer-events-none" />
 
           {filteredCourses.map((course, idx) => {
-            const isActive = activeCardIndex === idx;
+            const isActive = true;
             
             return (
               <Link

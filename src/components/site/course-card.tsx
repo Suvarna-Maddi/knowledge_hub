@@ -5,7 +5,7 @@ export function CourseCard({ category }: { category: CourseCategory }) {
   const Icon=category.icon; 
   return (
     <div className="rounded-2xl bg-gradient-to-r from-blue-300 via-blue-200 to-cyan-300 p-[2px] h-full group hover:shadow-xl transition-shadow shadow-blue-500/10">
-      <article className="bg-[#e8f4ff] rounded-[14px] h-full p-6 flex flex-col">
+      <article className="bg-[#e8f4ff] rounded-[14px] h-full p-6 flex flex-col shadow-[inset_8px_8px_16px_rgba(255,255,255,0.8),inset_-8px_-8px_16px_rgba(170,195,225,0.5),6px_6px_16px_rgba(10,25,50,0.06)] border border-white/40">
         <div className="flex items-start justify-between">
           <span className="grid size-12 place-items-center rounded-xl bg-blue-100 text-blue-600 transition-transform group-hover:scale-105">
             <Icon className="size-6" />

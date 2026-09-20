@@ -91,7 +91,7 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-gradient-to-br from-blue-900 via-[#0a192f] to-indigo-950 bg-[length:400%_400%] animate-gradient text-gray-300 relative overflow-hidden">
+    <footer className="bg-gradient-to-r from-[#03102c] via-[#103482] to-[#03102c] bg-[length:400%_400%] animate-gradient text-gray-300 relative overflow-hidden">
       
       {/* Optional faint background texture */}
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay pointer-events-none" />
