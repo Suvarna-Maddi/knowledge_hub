@@ -100,17 +100,7 @@ function TestimonialsPage() {
               Stories from our learners who turned curiosity into skills, skills into opportunities, and dreams into reality with Knowledge Hub.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-              <Button size="lg" className="rounded-full bg-[#0A1A3A] text-white hover:bg-blue-700 h-14 px-8 font-bold text-base shadow-xl shadow-blue-900/20 w-full sm:w-auto">
-                Explore Their Journeys <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button size="lg" variant="ghost" className="rounded-full h-14 px-6 font-bold text-base text-slate-700 hover:bg-slate-100 w-full sm:w-auto">
-                <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center mr-3 border border-slate-200 shrink-0">
-                  <Play className="w-4 h-4 text-blue-600 ml-1" />
-                </div>
-                See How It Changed
-              </Button>
-            </div>
+
           </motion.div>
 
           {/* Right: Vertical Marquee Waterfall */}

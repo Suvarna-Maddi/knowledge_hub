@@ -245,9 +245,7 @@ export function ServicesPage() {
                 Meet Our Expert Trainers
               </h2>
             </div>
-            <Link to="/about" className="hidden md:inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors mt-4 md:mt-0">
-              View All Trainers <ArrowRight className="w-4 h-4" />
-            </Link>
+
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -296,11 +294,7 @@ export function ServicesPage() {
               </motion.div>
             ))}
           </div>
-          <div className="mt-8 text-center md:hidden">
-            <Link to="/about" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors">
-              View All Trainers <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+
         </div>
       </section>
 
