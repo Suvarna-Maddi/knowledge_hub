@@ -74,13 +74,13 @@ export function CoursesPage() {
                       className="block group"
                     >
                       {/* Unique Premium Course Card */}
-                      <div className="relative group p-[1.5px] rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
-                        {/* Animated Border Glow (Visible on Hover) */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-cyan-300 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
-                        <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-slate-50 opacity-100 group-hover:opacity-0 transition-opacity duration-500"></div>
+                      <div className="relative h-full w-full rounded-[2.1rem] bg-gradient-to-br from-blue-300 via-blue-200 to-cyan-300 p-[2px] overflow-hidden group-hover:from-blue-400 group-hover:via-cyan-400 group-hover:to-blue-500 transition-colors duration-500 shadow-blue-500/10 hover:shadow-xl">
+                        
+                        {/* Shimmer effect */}
+                        <div className="absolute inset-0 translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-20 pointer-events-none"></div>
                         
                         {/* Inner Card Content */}
-                        <div className="relative flex-1 h-full bg-white/95 backdrop-blur-xl rounded-[2rem] p-6 flex flex-col border border-white/50 m-[1px]">
+                        <div className="relative flex-1 h-full bg-[#e8f4ff]/90 backdrop-blur-xl rounded-[2rem] p-6 flex flex-col m-[1px]">
                           
                           {/* Ambient Corner Glow */}
                           <div className="absolute -top-12 -right-12 w-32 h-32 bg-sky-100 rounded-full blur-2xl opacity-60 group-hover:bg-blue-200 transition-colors duration-500"></div>

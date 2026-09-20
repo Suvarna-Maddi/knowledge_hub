@@ -595,9 +595,9 @@ export function AboutPage() {
               </Button>
 
               <Button asChild variant="outline" size="lg" className="rounded-full h-14 px-8 text-base font-bold clay-pill border-blue-200 text-slate-900 hover:bg-white transition-all hover:scale-105">
-                <Link to="/contact" className="flex items-center gap-2">
+                <a href="tel:7997908465" className="flex items-center gap-2">
                   <Phone className="w-5 h-5 text-blue-600" /> Contact Us
-                </Link>
+                </a>
               </Button>
             </div>
 
@@ -1413,7 +1413,7 @@ export function AboutPage() {
 
             <div className="mt-8">
               <Button asChild className="w-full rounded-2xl h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-md border-0">
-                <Link to="/contact">Get Directions & Inquiry Form</Link>
+                <a href="tel:7997908465">Get Directions & Inquiry Form</a>
               </Button>
             </div>
           </div>
@@ -1447,7 +1447,7 @@ export function AboutPage() {
                 Apply For Admissions Now <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button asChild variant="outline" size="lg" className="rounded-full h-14 px-8 text-base font-bold text-white bg-transparent border-white/40 hover:bg-white/10 transition-all">
-                <Link to="/contact">Contact Us</Link>
+                <a href="tel:7997908465">Contact Us</a>
               </Button>
             </div>
           </div>

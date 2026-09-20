@@ -59,7 +59,7 @@ export function SiteHeader() {
         {/* Right Actions */}
         <div className="hidden items-center gap-5 lg:flex">
           <Button asChild className="group h-[2.35rem] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 pl-5 pr-4 text-[13px] font-semibold text-white shadow-[0_4px_14px_oklch(0.5_0.2_250/0.4)] transition-all hover:scale-105 hover:shadow-[0_6px_20px_oklch(0.5_0.2_250/0.6)] border-0">
-            <Link to="/contact">Join Now <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></Link>
+            <a href="tel:7997908465">Join Now <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></a>
           </Button>
         </div>
 
@@ -80,7 +80,7 @@ export function SiteHeader() {
             ))}
             <div className="my-3 h-px bg-white/10" />
             <Button asChild className="h-12 w-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 border-0">
-              <Link to="/contact" onClick={() => setOpen(false)}>Join Now <ArrowUpRight className="size-4" /></Link>
+              <a href="tel:7997908465" onClick={() => setOpen(false)}>Join Now <ArrowUpRight className="size-4" /></a>
             </Button>
           </div>
         </nav>
@@ -91,7 +91,7 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#0B1F4D] text-gray-300 relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-blue-900 via-[#0a192f] to-indigo-950 bg-[length:400%_400%] animate-gradient text-gray-300 relative overflow-hidden">
       
       {/* Optional faint background texture */}
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay pointer-events-none" />

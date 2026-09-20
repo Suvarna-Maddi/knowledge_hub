@@ -364,42 +364,6 @@ export function ServicesPage() {
         </div>
       </section>
 
-      {/* 9. Final CTA Banner */}
-      <section className="py-24 relative overflow-hidden bg-white">
-        <div className="max-w-[1200px] mx-auto px-5 relative z-10">
-          <div className="relative rounded-3xl bg-gradient-to-r from-[#0a192f] via-[#112240] to-[#0a192f] p-10 sm:p-16 overflow-hidden text-center flex flex-col items-center">
-            
-            {/* Background elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-[80px]" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px]" />
-            
-            <h2 className="text-3xl md:text-5xl font-black text-white font-display tracking-tight mb-6 max-w-2xl relative z-10">
-              Start Your Learning Journey Today
-            </h2>
-            <p className="text-lg text-slate-300 mb-10 font-medium max-w-2xl relative z-10">
-              Take the first step towards a successful career. Join Knowledge Hub and gain the skills the industry demands.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 relative z-10">
-              <Button 
-                onClick={handleOpenEnquiry}
-                size="lg"
-                className="h-14 rounded-full bg-blue-500 hover:bg-blue-600 px-8 text-sm font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all hover:scale-105"
-              >
-                Enroll Now
-              </Button>
-              <Button 
-                onClick={() => window.location.href = 'tel:7997908465'}
-                size="lg"
-                variant="outline"
-                className="h-14 rounded-full border border-slate-600 bg-[#0a192f] px-8 text-sm font-extrabold text-white hover:bg-slate-800 transition-all hover:scale-105"
-              >
-                Book Free Demo
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <EnquiryModal 
         service={selectedService}

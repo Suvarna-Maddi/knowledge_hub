@@ -107,19 +107,7 @@ export function ServicesHero({ onEnquire }: ServicesHeroProps) {
           </div>
 
           {/* Central Floating Badge */}
-          <motion.div 
-            animate={{ y: [-8, 8, -8] }}
-            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 bg-white/80 backdrop-blur-2xl border border-white/60 p-4 sm:p-6 rounded-2xl sm:rounded-[2rem] shadow-2xl flex flex-col items-center text-center transform rotate-[4deg] w-[200px] sm:w-auto"
-          >
-            <div className="flex -space-x-2 sm:-space-x-3 mb-2 sm:mb-4">
-              <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border-[2px] sm:border-[3px] border-white shadow-md bg-blue-100 flex items-center justify-center"><Users className="w-4 h-4 sm:w-6 sm:h-6 text-blue-600"/></div>
-              <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border-[2px] sm:border-[3px] border-white shadow-md bg-cyan-100 flex items-center justify-center"><Briefcase className="w-4 h-4 sm:w-6 sm:h-6 text-cyan-600"/></div>
-              <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border-[2px] sm:border-[3px] border-white shadow-md bg-purple-100 flex items-center justify-center"><GraduationCap className="w-4 h-4 sm:w-6 sm:h-6 text-purple-600"/></div>
-            </div>
-            <p className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0A1A3A] font-display tracking-tight">8+</p>
-            <p className="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-widest mt-1">Premium Services</p>
-          </motion.div>
+
           
         </div>
 

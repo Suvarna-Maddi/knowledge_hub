@@ -139,9 +139,6 @@ function HomePage() {
                   <span className="relative z-10 flex items-center gap-2">Explore Courses <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" /></span>
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="xl" className="group border-blue-200 hover:border-blue-300 bg-white/50 backdrop-blur-md hover:bg-white/80 hover:scale-[1.02] transition-all duration-300 shadow-sm">
-                <Link to="/contact">Contact Now</Link>
-              </Button>
             </div>
             <div className="hero-enter hero-enter-five mt-12 flex flex-wrap gap-3 max-w-xl">
               {trust.map((x) => (

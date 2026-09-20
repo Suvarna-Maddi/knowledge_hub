@@ -162,19 +162,7 @@ function TestimonialsPage() {
             </div>
 
             {/* Central Floating Badge */}
-            <motion.div 
-              animate={{ y: [-8, 8, -8] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 bg-white/80 backdrop-blur-2xl border border-white/60 p-4 sm:p-6 rounded-2xl sm:rounded-[2rem] shadow-2xl flex flex-col items-center text-center transform rotate-[4deg] w-[200px] sm:w-auto"
-            >
-              <div className="flex -space-x-2 sm:-space-x-3 mb-2 sm:mb-4">
-                {STUDENT_IMAGES.slice(0,5).map((img, i) => (
-                  <img key={`av-${i}`} src={img} className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border-[2px] sm:border-[3px] border-white shadow-md" />
-                ))}
-              </div>
-              <p className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0A1A3A] font-display tracking-tight">1,500+</p>
-              <p className="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-widest mt-1">Success Stories</p>
-            </motion.div>
+
             
           </div>
         </div>
@@ -411,42 +399,6 @@ function TestimonialsPage() {
         </div>
       </section>
 
-      {/* --- 6. FLOATING COMMUNITY SECTION --- */}
-      <section className="py-16 sm:py-24 bg-slate-50 overflow-hidden relative">
-        <div className="absolute top-10 left-4 sm:top-20 sm:left-10 font-handwriting text-xl sm:text-2xl text-slate-400 transform -rotate-12 hidden md:block">
-          Not just Students. <br/> A Stronger Community
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-8 mt-2">
-            <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-
-        <div className="absolute bottom-10 right-4 sm:bottom-20 sm:right-20 font-handwriting text-xl sm:text-2xl text-blue-400 transform rotate-6 hidden md:block text-right">
-          More Dreams <br/> More Success
-        </div>
-
-        <div className="max-w-[1200px] mx-auto h-[300px] sm:h-[400px] relative flex justify-center items-center scale-75 sm:scale-100">
-          {/* Collage of images with varying rotations and z-index */}
-          {[
-            { img: STUDENT_IMAGES[0], cls: "w-32 h-48 sm:w-48 sm:h-64 -rotate-12 -translate-x-20 sm:-translate-x-40 translate-y-5 sm:translate-y-10 z-10" },
-            { img: STUDENT_IMAGES[1], cls: "w-40 h-56 sm:w-56 sm:h-72 rotate-6 -translate-x-5 sm:-translate-x-10 -translate-y-5 sm:-translate-y-10 z-30" },
-            { img: STUDENT_IMAGES[2], cls: "w-48 h-32 sm:w-64 sm:h-48 -rotate-6 translate-x-16 sm:translate-x-32 translate-y-8 sm:translate-y-16 z-20" },
-            { img: STUDENT_IMAGES[3], cls: "w-24 h-40 sm:w-40 sm:h-56 rotate-12 translate-x-32 sm:translate-x-64 -translate-y-2 sm:-translate-y-5 z-10" },
-          ].map((item, i) => (
-            <motion.div 
-              key={i}
-              whileHover={{ scale: 1.05, rotate: 0, zIndex: 50 }}
-              className={`absolute rounded-xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer transition-all duration-300 ${item.cls}`}
-            >
-              <img src={item.img} alt="Community" className="w-full h-full object-cover" />
-            </motion.div>
-          ))}
-          
-          {/* Post-it Note Accent */}
-          <div className="absolute z-40 bg-yellow-100 shadow-md rotate-3 translate-x-[250px] translate-y-[80px] p-4 w-40 text-center font-handwriting text-lg text-slate-800">
-            Good Skills <br/> Brighter Tomorrows <br/> ♡
-          </div>
-        </div>
-      </section>
 
       {/* --- 7. COMPANY LOGOS STRIP --- */}
       <section className="py-16 bg-white border-y border-slate-100">
@@ -481,11 +433,7 @@ function TestimonialsPage() {
                 Explore Courses <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Link to="/contact" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="rounded-full bg-transparent border-white/40 text-white hover:bg-white/10 hover:text-white h-14 px-8 font-bold text-lg w-full backdrop-blur-md">
-                Talk to Our Team
-              </Button>
-            </Link>
+
           </div>
         </div>
 
