@@ -155,8 +155,8 @@ function HomePage() {
               ))}
             </div>
           </div>
-          <div className="hero-premium hero-stage-enter relative flex justify-center lg:justify-start lg:translate-x-[50px]">
-            <div className="relative w-full max-w-[18rem] sm:max-w-sm lg:max-w-[26rem] flex items-center justify-center mt-8">
+          <div className="hero-premium hero-stage-enter relative flex justify-center lg:justify-start lg:translate-x-[50px] w-full">
+            <div className="relative w-full max-w-[14rem] sm:max-w-[20rem] lg:max-w-[26rem] flex items-center justify-center mt-12 lg:mt-8 mx-auto">
               {/* Central decorative background */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl -z-10" />
               
@@ -164,7 +164,7 @@ function HomePage() {
               <img 
                 src="/hero.png" 
                 alt="Knowledge Hub Training" 
-                className="relative z-10 object-contain w-full h-auto drop-shadow-2xl animate-float-y"
+                className="relative z-10 object-contain w-full h-auto drop-shadow-2xl"
               />
 
               {/* Orbiting Course Logos */}

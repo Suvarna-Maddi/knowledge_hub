@@ -19,6 +19,8 @@ export function CourseEnrollmentModal({ course, isOpen, onClose }: CourseEnrollm
     qualification: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   useEffect(() => {
     if (course) {
       setIsSubmitted(false);
@@ -34,32 +36,34 @@ export function CourseEnrollmentModal({ course, isOpen, onClose }: CourseEnrollm
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitting Enrollment for Course:", course.title, formData);
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     
     try {
-      await fetch("https://formsubmit.co/ajax/knowledgehub.suncity@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: `New Enrollment for ${course.title}`,
-          ...formData,
-        }),
+      const { submitCandidateDetails } = await import("@/lib/submitLead");
+      const dbResult = await submitCandidateDetails({
+        name: formData.fullName,
+        email: formData.email,
+        mobile_number: formData.phone,
+        qualification: formData.qualification + (course ? ` (Enrollment: ${course.title})` : "")
       });
-    } catch (err) {
-      console.error(err);
-    }
-    
-    setIsSubmitted(true);
-    setTimeout(() => {
-      // Auto close after 3s
+      
+      if (!dbResult.success) {
+        throw new Error(dbResult.error);
+      }
+      
+      setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
         onClose();
-      }, 2500);
-    }, 500);
+        setFormData({ fullName: "", email: "", phone: "", qualification: "" });
+      }, 3000);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to submit enrollment. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleWhatsApp = () => {

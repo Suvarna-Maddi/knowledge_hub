@@ -107,11 +107,12 @@ export function AboutPage() {
     const timer = setInterval(() => {
       setActiveStep((prev) => {
         const nextStep = (prev + 1) % 5;
-        // Scroll the active card into view horizontally
+        // Scroll the active card into view horizontally without jumping the page vertically
         const card = document.getElementById(`journey-step-${nextStep}`);
         const container = document.getElementById('journey-cards-container');
         if (card && container && window.innerWidth < 768) {
-           card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+           const scrollPos = card.offsetLeft - container.offsetLeft - (container.clientWidth - card.clientWidth) / 2;
+           container.scrollTo({ left: scrollPos, behavior: 'smooth' });
         }
         return nextStep;
       });

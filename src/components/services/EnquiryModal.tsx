@@ -10,6 +10,7 @@ const enquirySchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Please enter a valid phone number"),
+  qualification: z.string().min(2, "Please enter your highest qualification"),
   service: z.string()
 });
 
@@ -31,6 +32,8 @@ export function EnquiryModal({ service, isOpen, onClose }: EnquiryModalProps) {
     }
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   useEffect(() => {
     if (service) {
       reset({ service: service.title });
@@ -42,30 +45,34 @@ export function EnquiryModal({ service, isOpen, onClose }: EnquiryModalProps) {
   if (!isOpen) return null;
 
   const onSubmit = async (data: EnquiryForm) => {
-    console.log("Submitting enquiry:", data);
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     
     try {
-      await fetch("https://formsubmit.co/ajax/knowledgehub.suncity@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: `New Enquiry for ${data.service}`,
-          ...data,
-        }),
+      const { submitCandidateDetails } = await import("@/lib/submitLead");
+      const dbResult = await submitCandidateDetails({
+        name: data.name,
+        email: data.email,
+        mobile_number: data.phone,
+        qualification: data.qualification + ` (Enquiry: ${data.service})`
       });
+      
+      if (!dbResult.success) {
+        throw new Error(dbResult.error);
+      }
+      
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        onClose();
+        reset();
+      }, 3000);
     } catch (err) {
       console.error(err);
+      alert("Failed to submit enquiry. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      onClose();
-      reset();
-    }, 3000);
   };
 
   const handleWhatsApp = () => {
@@ -137,6 +144,16 @@ export function EnquiryModal({ service, isOpen, onClose }: EnquiryModalProps) {
                 </div>
 
                 <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Highest Qualification</label>
+                  <input 
+                    {...register("qualification")}
+                    className="w-full h-14 rounded-xl border border-slate-200 bg-slate-50/50 px-4 text-sm font-normal text-slate-700 outline-none transition-all focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300 shadow-sm"
+                    placeholder="B.Tech, B.Sc, Intermediate..."
+                  />
+                  {errors.qualification && <p className="text-red-500 text-xs mt-1 font-medium">{errors.qualification.message}</p>}
+                </div>
+
+                <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
                   <input 
                     {...register("phone")}
@@ -147,8 +164,8 @@ export function EnquiryModal({ service, isOpen, onClose }: EnquiryModalProps) {
                 </div>
 
                 <div className="pt-2">
-                  <Button type="submit" className="w-full h-14 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-base font-bold text-white shadow-[0_8px_20px_-8px_rgba(79,70,229,0.5)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_25px_-8px_rgba(79,70,229,0.7)] active:translate-y-0 active:shadow-md border-0">
-                    Submit Enquiry
+                  <Button type="submit" disabled={isSubmitting} className="w-full h-14 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-base font-bold text-white shadow-[0_8px_20px_-8px_rgba(79,70,229,0.5)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_25px_-8px_rgba(79,70,229,0.7)] active:translate-y-0 active:shadow-md border-0 disabled:opacity-70 disabled:hover:translate-y-0">
+                    {isSubmitting ? "Submitting..." : "Submit Enquiry"}
                   </Button>
                 </div>
               </form>

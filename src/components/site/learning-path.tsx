@@ -122,16 +122,23 @@ export function LearningPath() {
         @media (max-width: 900px) {
             .accordion-container {
                 flex-direction: column;
-                height: auto;
-                min-height: 600px;
+                height: 600px;
+                border-radius: 16px;
             }
             .panel {
-                flex: 1;
-                min-height: 80px;
+                flex: none;
+                height: 64px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 0;
+            }
+            .panel:last-child {
+                border-bottom: none;
             }
             .panel.active {
-                flex: 4;
-                min-height: 250px;
+                flex: 1;
+                height: auto;
+                padding: 1.25rem 1rem;
             }
             .panel-vertical-title {
                 transform: translate(-50%, -50%);
@@ -141,12 +148,31 @@ export function LearningPath() {
                 transform-origin: center;
                 rotate: 0deg;
                 font-size: 1rem;
+                font-weight: 600;
                 text-align: center;
                 width: 100%;
             }
             .panel-content {
-                margin-top: 4rem;
+                margin-top: 3.5rem;
                 border-top: none;
+            }
+            .panel-content h3 {
+                font-size: 1.35rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+            .panel-content p {
+                font-size: 0.85rem;
+            }
+            .panel-icon {
+                top: 1.25rem;
+                left: 50%;
+                margin-left: -18px;
+                width: 36px;
+                height: 36px;
+            }
+            .panel.active .panel-icon {
+                transform: scale(1);
             }
         }
       `}</style>
