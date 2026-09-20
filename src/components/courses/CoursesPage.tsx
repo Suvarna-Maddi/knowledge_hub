@@ -73,39 +73,52 @@ export function CoursesPage() {
                       params={{ courseId: course.id }}
                       className="block group"
                     >
-                      {/* Course Grid Item (Clay Tile) */}
-                      <div 
-                        className={`clay-card p-6 border border-white/90 flex flex-col justify-between cursor-pointer transition-all duration-300 h-full hover:-translate-y-2`}
-                      >
-                        <div>
-                          {/* Top Row: Logo in Clay Badge + Duration */}
-                          <div className="flex items-center justify-between mb-4">
-                            <div className="w-12 h-12 rounded-2xl bg-white p-2.5 shadow-md flex items-center justify-center border border-slate-100 group-hover:scale-110 transition-transform">
-                              <img src={course.logoUrl} alt={course.title} className="w-full h-full object-contain" />
+                      {/* Unique Premium Course Card */}
+                      <div className="relative group p-[1.5px] rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+                        {/* Animated Border Glow (Visible on Hover) */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-cyan-300 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-slate-50 opacity-100 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        
+                        {/* Inner Card Content */}
+                        <div className="relative flex-1 h-full bg-white/95 backdrop-blur-xl rounded-[2rem] p-6 flex flex-col border border-white/50 m-[1px]">
+                          
+                          {/* Ambient Corner Glow */}
+                          <div className="absolute -top-12 -right-12 w-32 h-32 bg-sky-100 rounded-full blur-2xl opacity-60 group-hover:bg-blue-200 transition-colors duration-500"></div>
+                          
+                          <div className="relative z-10 flex-1 flex flex-col">
+                            {/* Header: Logo & Badges */}
+                            <div className="flex justify-between items-start mb-6">
+                              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 p-2.5 shadow-inner border border-slate-200/60 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 bg-white">
+                                <img src={course.logoUrl} alt={course.title} className="w-full h-full object-contain drop-shadow-sm" />
+                              </div>
+                              <div className="flex flex-col items-end gap-2">
+                                <span className="px-3 py-1 rounded-full bg-slate-50 text-slate-600 group-hover:bg-blue-50 group-hover:text-blue-700 text-[10px] font-black uppercase tracking-wider border border-slate-200 group-hover:border-blue-200 transition-colors">
+                                  {course.duration}
+                                </span>
+                                <span className={`w-2 h-2 rounded-full ${course.dotColor} shadow-sm animate-pulse`} />
+                              </div>
                             </div>
-                            <span className="clay-pill px-3 py-1 text-xs font-extrabold text-slate-700 border border-white">
-                              {course.duration}
-                            </span>
+
+                            {/* Title & Description */}
+                            <h3 className="text-slate-900 font-extrabold text-lg tracking-tight mb-2 group-hover:text-blue-600 transition-colors leading-tight">
+                              {course.title}
+                            </h3>
+                            <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 font-medium mb-6 flex-1">
+                              {course.description}
+                            </p>
                           </div>
 
-                          {/* Title */}
-                          <h3 className="text-slate-900 font-black text-base tracking-tight uppercase mb-2 flex items-center justify-between gap-2 group-hover:text-blue-700 transition-colors">
-                            <span className="truncate">{course.title}</span>
-                            <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${course.dotColor} shadow-xs`} />
-                          </h3>
-
-                          {/* Description */}
-                          <p className="text-slate-600 text-xs leading-relaxed line-clamp-3 font-medium mb-4">
-                            {course.description}
-                          </p>
-                        </div>
-
-                        {/* Card Footer */}
-                        <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between text-xs font-bold mt-4">
-                          <span className="text-blue-600 group-hover:underline flex items-center gap-1">
-                            View Syllabus & Enroll
-                          </span>
-                          <ArrowRight className="w-4 h-4 text-blue-600 transition-transform group-hover:translate-x-1" />
+                          {/* Footer: Interactive Action Button */}
+                          <div className="relative z-10 mt-auto pt-2">
+                            <div className="flex items-center justify-between w-full p-1.5 rounded-[1.25rem] bg-slate-50 border border-slate-100 group-hover:bg-gradient-to-r group-hover:from-blue-50 group-hover:to-cyan-50 group-hover:border-blue-100 transition-all duration-300">
+                              <span className="pl-3 text-xs font-extrabold text-slate-500 group-hover:text-blue-700 uppercase tracking-wide">
+                                Explore Syllabus
+                              </span>
+                              <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center shadow-sm group-hover:bg-blue-600 group-hover:text-white text-slate-400 group-hover:shadow-md transition-all duration-300">
+                                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:-rotate-45" />
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </Link>

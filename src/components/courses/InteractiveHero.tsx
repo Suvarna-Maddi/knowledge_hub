@@ -323,7 +323,7 @@ export function InteractiveHero() {
 
           {/* 3D BOOK SHELL CONTAINER */}
           <div 
-            className="relative w-[280px] sm:w-[540px] lg:w-[650px] h-[300px] sm:h-[430px] lg:h-[490px] flex justify-center items-center"
+            className="relative w-[340px] sm:w-[540px] lg:w-[650px] h-[360px] sm:h-[430px] lg:h-[490px] flex justify-center items-center"
             style={{ 
               transformStyle: "preserve-3d",
               transform: "rotateX(10deg) rotateY(-2deg)"
@@ -337,7 +337,7 @@ export function InteractiveHero() {
             </div>
 
             {/* STATIC LEFT PAGE STACK (Bottom left page showing active syllabus modules) */}
-            <div className="absolute top-3 bottom-4 left-4 right-1/2 bg-white rounded-l-lg border-y border-l border-slate-300 shadow-[inset_25px_0_35px_rgba(0,0,0,0.06)] p-5 sm:p-7 flex flex-col justify-between overflow-hidden">
+            <div className="absolute top-3 bottom-4 left-4 right-1/2 bg-white rounded-l-lg border-y border-l border-slate-300 shadow-[inset_25px_0_35px_rgba(0,0,0,0.06)] pl-3 pr-5 py-4 sm:p-7 flex flex-col justify-between overflow-hidden">
               <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                 <span className="text-[10px] font-extrabold uppercase tracking-widest text-cyan-700">
                   {bookPages[currentPage]?.chapter}
@@ -370,7 +370,7 @@ export function InteractiveHero() {
             </div>
 
             {/* STATIC RIGHT PAGE STACK (Bottom right page showing active course preview & takeaways) */}
-            <div className="absolute top-3 bottom-4 right-4 left-1/2 bg-white rounded-r-lg border-y border-r border-slate-300 shadow-[inset_-25px_0_35px_rgba(0,0,0,0.06)] p-5 sm:p-7 flex flex-col justify-between overflow-hidden">
+            <div className="absolute top-3 bottom-4 right-4 left-1/2 bg-white rounded-r-lg border-y border-r border-slate-300 shadow-[inset_-25px_0_35px_rgba(0,0,0,0.06)] pr-3 pl-5 py-4 sm:p-7 flex flex-col justify-between overflow-hidden">
               <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                 <span className="text-xs font-extrabold text-slate-900 truncate pr-2">
                   {bookPages[currentPage]?.title}
@@ -433,7 +433,7 @@ export function InteractiveHero() {
                 >
                   {/* FRONT FACE OF FLIPPING PAGE (Facing Right side initially) */}
                   <div 
-                    className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-slate-100 rounded-r-xl border-y border-r border-slate-300/90 shadow-[-18px_20px_35px_rgba(0,0,0,0.22),0_0_15px_rgba(34,211,238,0.15)] p-5 sm:p-7 flex flex-col justify-between overflow-hidden"
+                    className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-slate-100 rounded-r-xl border-y border-r border-slate-300/90 shadow-[-18px_20px_35px_rgba(0,0,0,0.22),0_0_15px_rgba(34,211,238,0.15)] pr-3 pl-5 py-4 sm:p-7 flex flex-col justify-between overflow-hidden"
                     style={{ backfaceVisibility: "hidden" }}
                   >
                     {/* Glowing light edge highlight on outer turning page margin */}
@@ -469,7 +469,7 @@ export function InteractiveHero() {
 
                   {/* BACK FACE OF FLIPPING PAGE (Facing Left side after flip) */}
                   <div 
-                    className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-100 rounded-l-xl border-y border-l border-slate-300/90 shadow-[inset_30px_0_40px_rgba(0,0,0,0.12),18px_20px_35px_rgba(0,0,0,0.22)] p-5 sm:p-7 flex flex-col justify-between overflow-hidden"
+                    className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-100 rounded-l-xl border-y border-l border-slate-300/90 shadow-[inset_30px_0_40px_rgba(0,0,0,0.12),18px_20px_35px_rgba(0,0,0,0.22)] pl-3 pr-5 py-4 sm:p-7 flex flex-col justify-between overflow-hidden"
                     style={{ 
                       backfaceVisibility: "hidden", 
                       transform: "rotateY(180deg)" 

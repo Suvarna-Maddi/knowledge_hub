@@ -155,7 +155,7 @@ function HomePage() {
               ))}
             </div>
           </div>
-          <div className="hero-premium hero-stage-enter relative flex justify-center lg:justify-start lg:-ml-2">
+          <div className="hero-premium hero-stage-enter relative flex justify-center lg:justify-start lg:translate-x-[50px]">
             <div className="relative w-full max-w-[18rem] sm:max-w-sm lg:max-w-[26rem] flex items-center justify-center mt-8">
               {/* Central decorative background */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl -z-10" />

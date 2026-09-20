@@ -10,7 +10,9 @@ const nav = [
 
 export function Brand({ inverse = false, inNav = false }: { inverse?: boolean; inNav?: boolean }) {
   return <Link to="/" className="flex min-w-0 items-center gap-3 group" aria-label="Knowledge Hub home">
-    <img src="/knhub.png" alt="Knowledge Hub Logo" className="h-12 w-auto object-contain" />
+    <div className="bg-white/95 p-1.5 rounded-xl shadow-sm ring-1 ring-white/20 transition-transform group-hover:scale-105">
+      <img src="/knhub.png" alt="Knowledge Hub Logo" className="h-9 w-auto object-contain" />
+    </div>
   </Link>;
 }
 
@@ -55,10 +57,6 @@ export function SiteHeader() {
 
         {/* Right Actions */}
         <div className="hidden items-center gap-5 lg:flex">
-          <button className="grid size-[2.15rem] place-items-center rounded-full bg-white/5 text-blue-100/70 transition-all hover:bg-white/10 hover:text-white" aria-label="Search">
-            <Search className="size-4" />
-          </button>
-          <div className="h-5 w-px bg-white/10" />
           <Button asChild className="group h-[2.35rem] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 pl-5 pr-4 text-[13px] font-semibold text-white shadow-[0_4px_14px_oklch(0.5_0.2_250/0.4)] transition-all hover:scale-105 hover:shadow-[0_6px_20px_oklch(0.5_0.2_250/0.6)] border-0">
             <Link to="/contact">Join Now <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></Link>
           </Button>
