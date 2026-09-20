@@ -550,10 +550,10 @@ export function AboutPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-x-12 lg:gap-y-6 items-center">
           
-          {/* Left Hero Text Content */}
-          <div className="lg:col-span-7 text-center lg:text-left">
+          {/* Top Hero Text Content (Heading & Badge) */}
+          <div className="order-1 lg:col-span-7 text-center lg:text-left flex flex-col justify-center">
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
               Empowering Careers Through{" "}
               <span className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-600 bg-clip-text text-transparent block sm:inline">
@@ -562,14 +562,17 @@ export function AboutPage() {
             </h1>
 
             {/* Dynamic Auto-Cycling Phrase Badge */}
-            <div className="mt-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/90 text-blue-950 text-xs font-extrabold border border-blue-200 shadow-xs animate-in fade-in duration-300">
+            <div className="mt-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/90 text-blue-950 text-xs font-extrabold border border-blue-200 shadow-xs animate-in fade-in duration-300 self-center lg:self-start">
               <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
               <span>Training Focus: </span>
               <span className="text-blue-700 font-black underline decoration-blue-400 decoration-2">{heroPhrases[phraseIdx]}</span>
             </div>
+          </div>
 
+          {/* Bottom Hero Text Content (Quote, Paragraph, CTA) */}
+          <div className="order-3 lg:order-3 lg:col-span-7 text-center lg:text-left">
             {/* Positioning Statement Callout Box */}
-            <div className="mt-6 p-6 rounded-3xl bg-white border-l-4 border-l-blue-600 border border-blue-100 shadow-md relative overflow-hidden group">
+            <div className="p-6 rounded-3xl bg-white border-l-4 border-l-blue-600 border border-blue-100 shadow-md relative overflow-hidden group">
               <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-blue-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700"></div>
               <p className="text-slate-900 text-base sm:text-lg font-extrabold leading-relaxed italic">
                 “Knowledge Hub is not just a training institute — it is a complete learning ecosystem that transforms students from beginners into confident, skilled, and career-ready individuals.”
@@ -592,9 +595,9 @@ export function AboutPage() {
               </Button>
 
               <Button asChild variant="outline" size="lg" className="rounded-full h-14 px-8 text-base font-bold clay-pill border-blue-200 text-slate-900 hover:bg-white transition-all hover:scale-105">
-                <a href="tel:7997908465" className="flex items-center gap-2">
-                  <Phone className="w-5 h-5 text-blue-600" /> Call 7997908465
-                </a>
+                <Link to="/contact" className="flex items-center gap-2">
+                  <Phone className="w-5 h-5 text-blue-600" /> Contact Us
+                </Link>
               </Button>
             </div>
 
@@ -612,7 +615,7 @@ export function AboutPage() {
           </div>
 
           {/* Right 3D Interactive Computer Lab & Skill Engine Simulator */}
-          <div className="lg:col-span-5 relative flex justify-center">
+          <div className="order-2 lg:order-2 lg:col-span-5 lg:row-span-2 relative flex justify-center w-full">
             <div 
               ref={heroRef}
               onMouseMove={handleMouseMove}
@@ -986,7 +989,7 @@ export function AboutPage() {
         </div>
 
         {/* Category Tabs Nav */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <div className="flex overflow-x-auto sm:flex-wrap justify-start sm:justify-center gap-2 sm:gap-3 mb-10 pb-2 sm:pb-0 px-4 sm:px-0 -mx-4 sm:mx-0 snap-x scrollbar-hide">
           {courseDomains.map((domain, index) => {
             const Icon = domain.icon;
             const isActive = activeTab === index;
@@ -994,14 +997,14 @@ export function AboutPage() {
               <button
                 key={domain.id}
                 onClick={() => setActiveTab(index)}
-                className={`px-5 py-3 rounded-full text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all duration-300 ${
+                className={`shrink-0 snap-center px-4 py-2.5 sm:px-5 sm:py-3 rounded-full text-[11px] sm:text-sm font-extrabold flex items-center gap-2 transition-all duration-300 ${
                   isActive
-                    ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30 scale-105"
+                    ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30 sm:scale-105"
                     : "clay-pill text-slate-700 hover:bg-white hover:text-blue-600"
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? "text-white" : "text-blue-600"}`} />
-                {domain.title.split(". ")[1]}
+                <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isActive ? "text-white" : "text-blue-600"}`} />
+                <span className="whitespace-nowrap">{domain.title.split(". ")[1]}</span>
               </button>
             );
           })}
@@ -1142,7 +1145,7 @@ export function AboutPage() {
           {/* Connecting Line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600 -translate-y-1/2 rounded-full -z-0 opacity-40"></div>
 
-          <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 scrollbar-hide" id="journey-cards-container">
+          <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10 overflow-x-auto snap-x snap-mandatory pt-6 pb-8 md:pb-6 -mt-6 scrollbar-hide" id="journey-cards-container">
             {journeySteps.map((item, idx) => {
               const Icon = item.icon;
               const isActive = activeStep === idx;
@@ -1443,8 +1446,8 @@ export function AboutPage() {
               >
                 Apply For Admissions Now <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full h-14 px-8 text-base font-bold text-white border-white/40 hover:bg-white/10 transition-all">
-                <Link to="/contact">Contact Admissions</Link>
+              <Button asChild variant="outline" size="lg" className="rounded-full h-14 px-8 text-base font-bold text-white bg-transparent border-white/40 hover:bg-white/10 transition-all">
+                <Link to="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>

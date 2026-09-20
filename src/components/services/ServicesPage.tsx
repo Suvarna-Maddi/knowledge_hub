@@ -263,7 +263,7 @@ export function ServicesPage() {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group relative h-[420px] rounded-[2rem] overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:shadow-[0_16px_48px_rgba(37,99,235,0.2)] transition-all duration-500 cursor-pointer"
+                className="group relative h-[380px] sm:h-[420px] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:shadow-[0_16px_48px_rgba(37,99,235,0.2)] transition-all duration-500 cursor-pointer"
               >
                 {/* Background Image */}
                 <img 
@@ -276,18 +276,18 @@ export function ServicesPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent transition-opacity duration-500 group-hover:from-blue-900/90" />
 
                 {/* Experience Badge */}
-                <div className="absolute top-5 right-5 bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-bold text-white shadow-sm border border-white/30 transform transition-transform duration-500 group-hover:-translate-y-1">
+                <div className="absolute top-4 right-4 sm:top-5 sm:right-5 bg-white/20 backdrop-blur-md px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold text-white shadow-sm border border-white/30 transform transition-transform duration-500 group-hover:-translate-y-1">
                   {trainer.exp}
                 </div>
 
                 {/* Content Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-500 translate-y-4 group-hover:translate-y-0">
-                  <h4 className="text-2xl font-black text-white mb-1 drop-shadow-md">{trainer.name}</h4>
-                  <p className="text-sm font-medium text-blue-200 mb-4">{trainer.role}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 transform transition-transform duration-500 translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 flex flex-col justify-end">
+                  <h4 className="text-lg sm:text-2xl font-black text-white mb-1 drop-shadow-md leading-tight">{trainer.name}</h4>
+                  <p className="text-xs sm:text-sm font-medium text-blue-200 mb-3 sm:mb-4 leading-snug line-clamp-2">{trainer.role}</p>
                   
-                  <div className="flex flex-wrap gap-2 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 opacity-100 md:opacity-80 md:group-hover:opacity-100 transition-opacity duration-500">
                     {trainer.skills.map((skill, idx) => (
-                      <span key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold px-3 py-1.5 rounded-full">
+                      <span key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-[11px] font-bold px-2 py-1 sm:px-3 sm:py-1.5 rounded-full whitespace-nowrap">
                         {skill}
                       </span>
                     ))}

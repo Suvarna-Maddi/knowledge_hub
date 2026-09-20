@@ -143,10 +143,11 @@ export function OurCourses() {
             const isActive = activeCardIndex === idx;
             
             return (
-              <div 
+              <Link
+                to="/courses"
                 key={idx} 
                 onClick={() => setActiveCardIndex(idx)}
-                className={`cursor-pointer rounded-2xl p-4 transition-all duration-500 flex flex-col group relative overflow-hidden ${
+                className={`cursor-pointer rounded-2xl p-4 transition-all duration-500 flex flex-col group relative overflow-hidden block ${
                   isActive 
                     ? "bg-gradient-to-br from-[#1E3A8A] to-[#0A1128] border border-blue-400/30 shadow-[0_0_30px_rgba(37,99,235,0.25)] scale-[1.02] transform-gpu"
                     : "bg-white border border-slate-100 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)]"
@@ -210,7 +211,7 @@ export function OurCourses() {
                     <ArrowRight className="w-3 h-3" />
                   </span>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

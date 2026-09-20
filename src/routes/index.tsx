@@ -282,15 +282,10 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <p className="mx-auto mt-7 max-w-2xl text-base leading-7 text-muted-foreground">
+          <p className="mx-auto mt-7 mb-4 max-w-2xl text-base leading-7 text-muted-foreground">
             Learn alongside focused peers, with instructors who keep the room practical, welcoming,
             and connected to the real world.
           </p>
-          <Button asChild variant="outline" className="mt-6">
-            <Link to="/gallery">
-              See our gallery <ArrowRight />
-            </Link>
-          </Button>
         </Reveal>
       </section>
       <FinalCta />
